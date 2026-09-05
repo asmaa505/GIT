@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Git Commands - Quick Reference</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #090d16;
+            --surface: #111827;
+            --surface-hover: #1f2937;
+            --border: #1f2937;
+            --border-highlight: #374151;
+            --text-main: #f9fafb;
+            --text-muted: #9ca3af;
+            --primary: #6366f1;
+            --primary-light: #818cf8;
+            --code-text: #38bdf8;
+            --badge-most-used-bg: rgba(99, 102, 241, 0.15);
+            --badge-most-used-border: rgba(99, 102, 241, 0.4);
+            --badge-most-used-text: #a5b4fc;
+            --badge-setup-bg: rgba(16, 185, 129, 0.15);
+            --badge-setup-border: rgba(16, 185, 129, 0.4);
+            --badge-setup-text: #6ee7b7;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', -apple-system, sans-serif;
+            background-color: var(--bg);
+            color: var(--text-main);
+            padding: 40px 20px;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        header h1 {
+            font-size: 2.25rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            margin-bottom: 8px;
+        }
+
+        header h1 span {
+            color: var(--primary-light);
+        }
+
+        header p {
+            color: var(--text-muted);
+            font-size: 1rem;
+        }
+
+        .section-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .section-title::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: var(--border);
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 16px;
+            margin-bottom: 40px;
+        }
+
+        .card {
+            background-color: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 20px;
+            transition: all 0.2s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+        }
+
+        .card:hover {
+            border-color: var(--border-highlight);
+            transform: translateY(-2px);
+            background-color: var(--surface-hover);
+        }
+
+        .card.featured {
+            border-color: var(--badge-most-used-border);
+            box-shadow: 0 4px 20px -2px rgba(99, 102, 241, 0.12);
+        }
+
+        .card.setup {
+            border-color: var(--badge-setup-border);
+            box-shadow: 0 4px 20px -2px rgba(16, 185, 129, 0.12);
+        }
+
+        .card-header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 8px;
+            margin-bottom: 12px;
+        }
+
+        code {
+            font-family: 'Fira Code', monospace;
+            color: var(--code-text);
+            font-size: 0.95rem;
+            font-weight: 500;
+            word-break: break-all;
+        }
+
+        .badge {
+            font-size: 0.7rem;
+            font-weight: 600;
+            padding: 3px 8px;
+            border-radius: 20px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            white-space: nowrap;
+        }
+
+        .badge-essential {
+            background: var(--badge-most-used-bg);
+            border: 1px solid var(--badge-most-used-border);
+            color: var(--badge-most-used-text);
+        }
+
+        .badge-setup {
+            background: var(--badge-setup-bg);
+            border: 1px solid var(--badge-setup-border);
+            color: var(--badge-setup-text);
+        }
+
+        .card p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        @media (max-width: 640px) {
+            body {
+                padding: 20px 12px;
+            }
+            .grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <h1>Essential <span>Git</span> Commands</h1>
+            <p>Categorized workflow guide for new projects and daily usage.</p>
+        </header>
+
+        <!-- NEW PROJECT INITIALIZATION SECTION -->
+        <div class="section-title">New Project Setup</div>
+        <div class="grid">
+            <div class="card setup">
+                <div class="card-header">
+                    <code>git init</code>
+                    <span class="badge badge-setup">Step 1</span>
+                </div>
+                <p>Initialize a brand-new empty Git repository in your local project folder.</p>
+            </div>
+
+            <div class="card setup">
+                <div class="card-header">
+                    <code>git branch -M main</code>
+                    <span class="badge badge-setup">Step 2</span>
+                </div>
+                <p>Rename the default branch to <code>main</code> (standard naming convention for modern remote hosts).</p>
+            </div>
+
+            <div class="card setup">
+                <div class="card-header">
+                    <code>git remote add origin &lt;url&gt;</code>
+                    <span class="badge badge-setup">Step 3</span>
+                </div>
+                <p>Link your local repository to a new remote server URL (GitHub, GitLab, Bitbucket).</p>
+            </div>
+
+            <div class="card setup">
+                <div class="card-header">
+                    <code>git push -u origin main</code>
+                    <span class="badge badge-setup">Step 4</span>
+                </div>
+                <p>Push local commits to the remote repository and set upstream tracking for future pushes.</p>
+            </div>
+        </div>
+
+        <!-- FREQUENTLY USED COMMANDS -->
+        <div class="section-title">Most Frequently Used</div>
+        <div class="grid">
+            <div class="card featured">
+                <div class="card-header">
+                    <code>git status</code>
+                    <span class="badge badge-essential">High Usage</span>
+                </div>
+                <p>Check the status of modified, staged, or untracked files in your working directory.</p>
+            </div>
+
+            <div class="card featured">
+                <div class="card-header">
+                    <code>git add -A</code>
+                    <span class="badge badge-essential">High Usage</span>
+                </div>
+                <p>Stage all changes (new, modified, and deleted files) across the entire project repository.</p>
+            </div>
+
+            <div class="card featured">
+                <div class="card-header">
+                    <code>git commit -m "msg"</code>
+                    <span class="badge badge-essential">High Usage</span>
+                </div>
+                <p>Record staged changes into the repository history with a descriptive commit message.</p>
+            </div>
+
+            <div class="card featured">
+                <div class="card-header">
+                    <code>git log --oneline</code>
+                    <span class="badge badge-essential">High Usage</span>
+                </div>
+                <p>View a concise, single-line commit history log with short hashes and commit messages.</p>
+            </div>
+
+            <div class="card featured">
+                <div class="card-header">
+                    <code>git add &lt;file-name&gt;</code>
+                    <span class="badge badge-essential">High Usage</span>
+                </div>
+                <p>Stage a specific individual file to prepare it for the next commit.</p>
+            </div>
+
+            <div class="card featured">
+                <div class="card-header">
+                    <code>.gitignore</code>
+                    <span class="badge badge-essential">Essential File</span>
+                </div>
+                <p>Specify intentionally untracked files and folders (e.g., <code>node_modules/</code>, <code>.env</code>) to ignore.</p>
+            </div>
+        </div>
+
+        <!-- OTHER USEFUL COMMANDS -->
+        <div class="section-title">Secondary & Utility Commands</div>
+        <div class="grid">
+            <div class="card">
+                <div class="card-header">
+                    <code>git status -s</code>
+                </div>
+                <p>Display short-format working tree status using two-character status indicators.</p>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <code>git add *</code>
+                </div>
+                <p>Stage all modified and new files in the current working folder.</p>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <code>git add *.ext</code>
+                </div>
+                <p>Stage files matching a specific pattern or extension (e.g., <code>git add *.js</code>).</p>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <code>.git/info/exclude</code>
+                </div>
+                <p>Define local-only ignore rules specific to your machine without sharing them with the team.</p>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <code>git log</code>
+                </div>
+                <p>Show full commit history, including author, date, and full commit messages.</p>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <code>git revert &lt;hash&gt;</code>
+                </div>
+                <p>Safely undo changes from a past commit by creating a new inverse commit.</p>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <code>git reset &lt;hash&gt;</code>
+                </div>
+                <p>Reset HEAD state to a specified commit using flags (<code>--soft</code>, <code>--hard</code>).</p>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
