@@ -25,6 +25,9 @@
             --badge-setup-bg: rgba(16, 185, 129, 0.15);
             --badge-setup-border: rgba(16, 185, 129, 0.4);
             --badge-setup-text: #6ee7b7;
+            --badge-pull-bg: rgba(245, 158, 11, 0.15);
+            --badge-pull-border: rgba(245, 158, 11, 0.4);
+            --badge-pull-text: #fcd34d;
         }
 
         * {
@@ -121,6 +124,11 @@
             box-shadow: 0 4px 20px -2px rgba(16, 185, 129, 0.12);
         }
 
+        .card.pull {
+            border-color: var(--badge-pull-border);
+            box-shadow: 0 4px 20px -2px rgba(245, 158, 11, 0.12);
+        }
+
         .card-header {
             display: flex;
             align-items: flex-start;
@@ -159,6 +167,12 @@
             color: var(--badge-setup-text);
         }
 
+        .badge-pull {
+            background: var(--badge-pull-bg);
+            border: 1px solid var(--badge-pull-border);
+            color: var(--badge-pull-text);
+        }
+
         .card p {
             color: var(--text-muted);
             font-size: 0.9rem;
@@ -180,11 +194,11 @@
     <div class="container">
         <header>
             <h1>Essential <span>Git</span> Commands</h1>
-            <p>Categorized workflow guide for new projects and daily usage.</p>
+            <p>Categorized workflow guide for new projects, pulling updates, and daily usage.</p>
         </header>
 
-        <!-- NEW PROJECT INITIALIZATION SECTION -->
-        <div class="section-title">New Project Setup</div>
+        <!-- SECTION 1: NEW PROJECT INITIALIZATION SECTION -->
+        <div class="section-title">1. New Project Setup</div>
         <div class="grid">
             <div class="card setup">
                 <div class="card-header">
@@ -219,8 +233,60 @@
             </div>
         </div>
 
+        <!-- SECTION 2: PULL UPDATES WORKFLOW -->
+        <div class="section-title">2. Pull Updates Workflow</div>
+        <div class="grid">
+            <div class="card pull">
+                <div class="card-header">
+                    <code>git status</code>
+                    <span class="badge badge-pull">Step 1</span>
+                </div>
+                <p>Check working tree status to inspect current local modifications and untracked files before pulling updates.</p>
+            </div>
+
+            <div class="card pull">
+                <div class="card-header">
+                    <code>git stash</code>
+                    <span class="badge badge-pull">Step 2</span>
+                </div>
+                <p>Temporarily shelter uncommitted local changes into a clean working stack to avoid conflicts during pull.</p>
+            </div>
+
+            <div class="card pull">
+                <div class="card-header">
+                    <code>git branch</code>
+                    <span class="badge badge-pull">Step 3</span>
+                </div>
+                <p>List all local branches and highlight the active branch you are currently working on.</p>
+            </div>
+
+            <div class="card pull">
+                <div class="card-header">
+                    <code>git checkout &lt;branch_name&gt;</code>
+                    <span class="badge badge-pull">Step 4</span>
+                </div>
+                <p>Switch your local working directory to the specified target branch (e.g., <code>git checkout main</code>).</p>
+            </div>
+
+            <div class="card pull">
+                <div class="card-header">
+                    <code>git pull origin main</code>
+                    <span class="badge badge-pull">Step 5</span>
+                </div>
+                <p>Fetch and merge the latest remote commits directly from the <code>main</code> branch on GitHub.</p>
+            </div>
+
+            <div class="card pull">
+                <div class="card-header">
+                    <code>git stash pop</code>
+                    <span class="badge badge-pull">Step 6</span>
+                </div>
+                <p>Re-apply your previously stashed local changes back onto the newly updated codebase and remove them from the stash stack.</p>
+            </div>
+        </div>
+
         <!-- FREQUENTLY USED COMMANDS -->
-        <div class="section-title">Most Frequently Used</div>
+        <div class="section-title">3. Most Frequently Used</div>
         <div class="grid">
             <div class="card featured">
                 <div class="card-header">
@@ -272,7 +338,7 @@
         </div>
 
         <!-- OTHER USEFUL COMMANDS -->
-        <div class="section-title">Secondary & Utility Commands</div>
+        <div class="section-title">4. Secondary & Utility Commands</div>
         <div class="grid">
             <div class="card">
                 <div class="card-header">
