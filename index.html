@@ -28,6 +28,9 @@
             --badge-pull-bg: rgba(245, 158, 11, 0.15);
             --badge-pull-border: rgba(245, 158, 11, 0.4);
             --badge-pull-text: #fcd34d;
+            --badge-branch-bg: rgba(236, 72, 153, 0.15);
+            --badge-branch-border: rgba(236, 72, 153, 0.4);
+            --badge-branch-text: #f472b6;
         }
 
         * {
@@ -129,6 +132,11 @@
             box-shadow: 0 4px 20px -2px rgba(245, 158, 11, 0.12);
         }
 
+        .card.branch {
+            border-color: var(--badge-branch-border);
+            box-shadow: 0 4px 20px -2px rgba(236, 72, 153, 0.12);
+        }
+
         .card-header {
             display: flex;
             align-items: flex-start;
@@ -171,6 +179,12 @@
             background: var(--badge-pull-bg);
             border: 1px solid var(--badge-pull-border);
             color: var(--badge-pull-text);
+        }
+
+        .badge-branch {
+            background: var(--badge-branch-bg);
+            border: 1px solid var(--badge-branch-border);
+            color: var(--badge-branch-text);
         }
 
         .card p {
@@ -285,8 +299,36 @@
             </div>
         </div>
 
+        <!-- SECTION 3: BRANCHING WORKFLOW -->
+        <div class="section-title">3. Branching Workflow</div>
+        <div class="grid">
+            <div class="card branch">
+                <div class="card-header">
+                    <code>git branch &lt;branch-name&gt;</code>
+                    <span class="badge badge-branch">Create</span>
+                </div>
+                <p>Creates a new branch locally without switching to it (you remain on your current branch).</p>
+            </div>
+
+            <div class="card branch">
+                <div class="card-header">
+                    <code>git checkout &lt;branch-name&gt;</code>
+                    <span class="badge badge-branch">Switch</span>
+                </div>
+                <p>Switches your working directory to an existing local branch that you created previously.</p>
+            </div>
+
+            <div class="card branch">
+                <div class="card-header">
+                    <code>git checkout -b &lt;branch-name&gt;</code>
+                    <span class="badge badge-branch">Create & Switch</span>
+                </div>
+                <p>Creates a brand-new branch and immediately switches to it in a single combined step.</p>
+            </div>
+        </div>
+
         <!-- FREQUENTLY USED COMMANDS -->
-        <div class="section-title">3. Most Frequently Used</div>
+        <div class="section-title">4. Most Frequently Used</div>
         <div class="grid">
             <div class="card featured">
                 <div class="card-header">
@@ -338,7 +380,7 @@
         </div>
 
         <!-- OTHER USEFUL COMMANDS -->
-        <div class="section-title">4. Secondary & Utility Commands</div>
+        <div class="section-title">5. Secondary & Utility Commands</div>
         <div class="grid">
             <div class="card">
                 <div class="card-header">
